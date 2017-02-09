@@ -21,19 +21,26 @@ public static void main(String[] args) {
         // Print a Log In message to the screen
         System.out.println("Successfully opened the website " + website);
         
+        //Input a text in a textbox
         driver.findElement(By.name("s")).sendKeys("gracias");
+        
+        //Submit a query in an search inputbox
         driver.findElement(By.name("s")).submit();
         System.out.println("Submit on search box");
-        //driver.findElement(By.partialLinkText("Opening doors")).click();
  
-		//Wait for 5 Sec
-		/*try {
-			Thread.sleep(5);
+		//Wait for x Sec
+        int sleep = 5000;
+		try {
+			Thread.sleep(sleep);
+			System.out.println("Wait for " + sleep + "  sec");
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
+		driver.findElement(By.partialLinkText("Opening doors")).click();
+		
+		/*
         // Close the driver
         driver.quit();*/
     }
