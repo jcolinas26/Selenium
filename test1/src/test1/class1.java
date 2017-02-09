@@ -22,8 +22,9 @@ public static void main(String[] args) {
         System.out.println("Successfully opened the website " + website);
         
         driver.findElement(By.name("s")).sendKeys("gracias");
-        
-        driver.findElement(By.partialLinkText("Opening doors")).click();
+        driver.findElement(By.name("s")).submit();
+        System.out.println("Submit on search box");
+        //driver.findElement(By.partialLinkText("Opening doors")).click();
  
 		//Wait for 5 Sec
 		/*try {
