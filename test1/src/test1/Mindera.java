@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Mindera {
 	
@@ -27,8 +29,30 @@ public static void main(String[] args) {
         System.out.println("after click");        
      
         Mindera2.sleep(5000);
+        
+        WebElement parent1 = driver.findElement(By.id("react-mount"));
+        System.out.println("element: " + parent1);
+        WebElement parent2 = parent1.findElement(By.className("navigation-container"));
+        System.out.println("element2: " + parent2);
+        WebElement parent3 = parent2.findElement(By.className("navigation-items"));
+        System.out.println("element3: " + parent3);
+        WebElement parent4 = parent3.findElement(By.linkText("Blog"));
+        System.out.println("element4: " + parent4);
+       
+        
+        WebDriverWait waiting = new WebDriverWait(driver, 30, 2500);
 
-        driver.findElement(By.partialLinkText("Case")).click();
+        WebElement element = waiting.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Blog")));
+        element.click();
+
+        
+       /* try{
+        parent4.click();
+        }
+        catch(Exception e){
+        	System.out.println("exception");
+        	e.printStackTrace();
+        }*/
 		
 
     }
