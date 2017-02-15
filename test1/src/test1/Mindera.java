@@ -1,6 +1,7 @@
 package test1;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -30,21 +31,8 @@ public static void main(String[] args) {
      
         Mindera2.sleep(5000);
         
-        WebElement parent1 = driver.findElement(By.id("react-mount"));
-        System.out.println("element: " + parent1);
-        WebElement parent2 = parent1.findElement(By.className("navigation-container"));
-        System.out.println("element2: " + parent2);
-        WebElement parent3 = parent2.findElement(By.className("navigation-items"));
-        System.out.println("element3: " + parent3);
-        WebElement parent4 = parent3.findElement(By.linkText("Blog"));
-        System.out.println("element4: " + parent4);
-       
-        
-        WebDriverWait waiting = new WebDriverWait(driver, 30, 2500);
-
-        WebElement element = waiting.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Blog")));
-        element.click();
-
+        WebElement p = driver.findElement(By.xpath("//*[@id='react-mount']/div/div[1]/div[2]/div[2]/a[5]"));
+        p.click();
         
        /* try{
         parent4.click();
