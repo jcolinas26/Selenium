@@ -5,8 +5,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Mindera {
 
@@ -28,6 +26,16 @@ public class Mindera {
 
 		// open all menu options
 		menuOptions();
+		
+		sleep(1000);
+		
+		click("//*[@id='home']/div/div");//go to next section
+		
+		/*scrollDown();
+		
+		sleep(1000);
+		
+		scrollUp();*/
 
 		/*
 		 * try{ parent4.click(); } catch(Exception e){
@@ -35,12 +43,19 @@ public class Mindera {
 		 */
 
 	}
+	
+	static void click(String xpath){
+		
+		WebElement link;
+		
+		link = driver.findElement(By.xpath(xpath));
+		link.click();
+	}
 
 	static void menuOptions() {
 
 		int i;
 		WebElement hamburguer = hamburguer();
-		;
 		WebElement link;
 
 		for (i = 2; i <= 5; i++) {
@@ -57,24 +72,23 @@ public class Mindera {
 		hamburguer.click();
 		sleep(2000);
 
-		link = driver.findElement(By.xpath("//*[@id='react-mount']/div/div[1]/div[2]/div[2]/a[1]"));
-		link.click();
+		click("//*[@id='react-mount']/div/div[1]/div[2]/div[2]/a[1]");//go home
 
 	}
 
 	static WebElement hamburguer() {
 
 		WebElement parent1 = driver.findElement(By.id("react-mount"));
-        System.out.println("element: " + parent1);
-        WebElement parent2 = parent1.findElement(By.className("navigation-container"));
-        System.out.println("element2: " + parent2);
-        WebElement parent3 = parent2.findElement(By.className("navigation-bar"));
-        System.out.println("element3: " + parent3);
-        WebElement parent4 = parent3.findElement(By.tagName("use"));
-        System.out.println("element4: " + parent4);
-		
+		System.out.println("element: " + parent1);
+		WebElement parent2 = parent1.findElement(By.className("navigation-container"));
+		System.out.println("element2: " + parent2);
+		WebElement parent3 = parent2.findElement(By.className("navigation-bar"));
+		System.out.println("element3: " + parent3);
+		WebElement parent4 = parent3.findElement(By.tagName("use"));
+		System.out.println("element4: " + parent4);
+
 		return parent4;
-		
+
 	}
 
 	static void sleep(int sec) {
@@ -87,6 +101,22 @@ public class Mindera {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+	}
+
+	static void scrollDown() {
+
+		// Scroll down
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("scroll(0, 750);");
+
+	}
+	
+	static void scrollUp() {
+
+		// Scroll down
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("scroll(0, -750);");
 
 	}
 
